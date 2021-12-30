@@ -50,6 +50,8 @@ class NearestNeighborIndex:
         initial speed-up trick, check distance^2 instead of actually computing the distance.
         bigger deal on older machines and mostly depends on the implementation of sqrt;
         but found a 1.35% speed-up.
+
+        same behavior as find_nearest_slow
         """
         min_dist = None
         min_point = None
@@ -66,7 +68,7 @@ class NearestNeighborIndex:
         """
         execute kd_nearest_neighbor for our k-d tree against query_point.
 
-        only return the closest point, since that's all we care about.
+        return the closest point, or None if nothing was found.
         """
         [best, distance] = kd_nearest_neighbor(self.tree, query_point)
         return best
