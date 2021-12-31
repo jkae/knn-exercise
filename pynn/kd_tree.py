@@ -79,8 +79,8 @@ def kd_nearest_neighbor(root: kdTreeNode, to_check: tuple[float, float], depth: 
 
     # check if the distance to the current position, on a single axis, is better than the current best distance
     if (abs(root.location[axis] - to_check[axis]) < math.sqrt(current_best_distance)):
-        # if it is, we should check the other node -- abs(child-1) will flip between 0 and 1 :)
-        [leaf, leaf_distance] = kd_nearest_neighbor(root.children[abs(child-1)], to_check, depth + 1)
+        # if it is, we should check the other node
+        [leaf, leaf_distance] = kd_nearest_neighbor(root.children[abs(child-1)], to_check, depth + 1) # abs(child-1) will flip between 0 and 1 :)
         if (leaf and leaf_distance < current_best_distance):
             current_best = leaf
             current_best_distance = leaf_distance
